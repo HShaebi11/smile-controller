@@ -1,13 +1,3 @@
-alert('Hello, This Backup code')
-
-<script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
-    }
-  }
-
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import SplineLoader from '@splinetool/loader';
@@ -64,40 +54,4 @@ function onWindowResize() {
   camera.bottom = window.innerHeight / -2;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
-// Controller Support (Gamepad API)
-let gamepad;
-window.addEventListener('gamepadconnected', (event) => {
-  console.log('Gamepad connected:', event.gamepad);
-  gamepad = event.gamepad;
-});
-
-function handleControllerInput() {
-  if (!gamepad || !splineScene) return;
-
-  // Refresh gamepad state
-  const currentGamepad = navigator.getGamepads()[gamepad.index];
-  if (!currentGamepad) return;
-
-  // Left joystick: Translate (position)
-  const leftX = currentGamepad.axes[0]; // X-axis
-  const leftY = currentGamepad.axes[1]; // Y-axis
-  splineScene.position.x += leftX * 10; // Adjust sensitivity by changing 10
-  splineScene.position.y -= leftY * 10;
-
-  // Right joystick: Rotate (rotation)
-  const rightX = currentGamepad.axes[2]; // X-axis
-  const rightY = currentGamepad.axes[3]; // Y-axis
-  splineScene.rotation.y += rightX * 0.05; // Adjust sensitivity by changing 0.05
-  splineScene.rotation.x -= rightY * 0.05;
-
-  console.log(`Position: (${splineScene.position.x}, ${splineScene.position.y})`);
-  console.log(`Rotation: (${splineScene.rotation.x}, ${splineScene.rotation.y})`);
-}
-
-function animate(time) {
-  controls.update();
-  handleControllerInput(); // Add controller input to animation loop
-  renderer.render(scene, camera);
 }
