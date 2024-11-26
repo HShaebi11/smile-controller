@@ -1,8 +1,8 @@
 alert("Hello");
 
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.module.js';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.154.0/examples/jsm/controls/OrbitControls.js';
-import { SplineLoader } from 'https://cdn.jsdelivr.net/npm/@splinetool/loader@0.8.0/build/spline-loader.module.js';
+src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"
+src="https://cdn.jsdelivr.net/npm/three@0.154.0/examples/js/controls/OrbitControls.js"
+src="https://cdn.jsdelivr.net/npm/@splinetool/loader@0.8.0/build/spline-loader.min.js"
 
 // Get the container element
 const container = document.getElementById('threejs-container');
